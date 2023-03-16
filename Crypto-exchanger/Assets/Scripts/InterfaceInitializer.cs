@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InterfaceCreator : MonoBehaviour
+public class InterfaceInitializer : MonoBehaviour
 {
     [SerializeField] private CurrencieData dobbner;
     [SerializeField] private CurrencieData krokens;
@@ -20,8 +20,8 @@ public class InterfaceCreator : MonoBehaviour
             GameObject obj = Instantiate(cellBuyPrefab, transform);
             Cell objCell = obj.GetComponent<Cell>();
             objCell.nameText.text = _currencieDatas[i].name;
-            objCell.costText.text = $"{(_currencieDatas[i].minCost + _currencieDatas[i].maxCost)/ 2}";
             objCell.icon.sprite = _currencieDatas[i].icon;
+            objCell.currencieData = _currencieDatas[i];
         }
 
         for (int i = 0; i < 3; i++)
@@ -29,7 +29,6 @@ public class InterfaceCreator : MonoBehaviour
             GameObject obj = Instantiate(cellSellPrefab, transform);
             Cell objCell = obj.GetComponent<Cell>();
             objCell.nameText.text = _currencieDatas[i].name;
-            objCell.costText.text = "0";
             objCell.icon.sprite = _currencieDatas[i].icon;
         }
     }
